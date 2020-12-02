@@ -1,4 +1,4 @@
-# workshop
+# Native Imge Workshop
 GraalVM workshop instructions
 
 The instructions to install GraalVM can be found, for example, [here](https://docs.oracle.com/en/graalvm/enterprise/20/docs/getting-started/installation-linux/).
