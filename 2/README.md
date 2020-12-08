@@ -1,16 +1,32 @@
+
 # Assisted configuration for GraalVM native image
 
 *Estimated time: 10 minutes.*
 
-GraalVM native image build uses the closed universe assumption, which means all the bytecode in the application needs to be observed and analysed at the build time.
+## The Closed World Assumption
 
-One area the analysis process is responsible for is to determine which classes, methods and fields need to be included in the executable. The analysis is static, so it might need some configuration to correctly include the parts of the program that use dynamic features of the language.
+GraalVM native image build uses the closed universe assumption, which means that all the bytecode in the application 
+needs to be known (observed and analysed) at the build time.
 
-For example, classes and methods accessed through the Reflection API need to be configured. There are a few ways how these can be configured, but the most convenient way is the assisted configuration javaagent.
+One area the analysis process is responsible for is to determine which classes, methods and fields need to be included 
+in the executable. The analysis is static, it can't know about any dynamic class loading, reflection etc., so it needs 
+some configuration to correctly include the parts of the program that use dynamic features of the language.
+
+What can information can we pass to the native image build?
+
+* Reflection
+* Resources
+* JNI
+* Dynamic Proxies
+
+For example, classes and methods accessed through the Reflection API need to be configured. There are a few ways how 
+these can be configured, but the most convenient way is the assisted configuration javaagent.
+
+## Native Image Assisted Configuration : The Java Agent
 
 Imagine you have a class like this in the `ReflectionExample.java`:
 
-```
+``` Java
 import java.lang.reflect.Method;
 
 class StringReverser {
@@ -40,9 +56,10 @@ public class ReflectionExample {
 ```
 
 
-The main method invokes all methods whose names are passed as command line arguments.
+The main method invokes all methods whose names are passed in as command line arguments.
 Run it normally and explore the output.
-```
+
+``` Bash
 java ReflectionExample StringReverser reverse "hello"
 ```
 
@@ -62,21 +79,23 @@ Run the result and explore the output:
 ./reflectionexample StringReverser reverse "hello"
 ```
 
-Writing a complete reflection configuration file from scratch is possible, but tedious.
-Therefore, we provide an agent for the Java HotSpot VM that produces a reflection configuration file by tracing all reflective lookup operations.
-It will also record all usages of the Java Native Interface (JNI), Java Reflection, Dynamic Proxy objects (`java.lang.reflect.Proxy`), or class path resources (`Class.getResource`).
+Writing a complete reflection configuration file from scratch is possible, but tedious. Therefore, we provide an agent 
+for the Java HotSpot VM.
 
-You can specify the agent like the following:
+We can use the tracing agent when running the Java application and let it record all of this config for us.
 
-create the directory for the configuration:
+First, we create the directory for the configuration to be saved to:
 ```
 mkdir -p META-INF/native-image
 ```
 
-Run the application:
+Then, we run the application with the tracing agent enabled:
 ```
+# Note: the tracing agent must come before classpath and jar params on the command ine
 java -agentlib:native-image-agent=config-output-dir=META-INF/native-image ReflectionExample StringReverser reverse "hello"
 ```
+
+![Tracing Agent Config](../images/tracing-agent-config.png =100x25)
 
 Explore the created configuration:
 
@@ -104,3 +123,5 @@ reflectionexample StringReverser reverse "joker"
 This is a very convenient way to configure reflection and resources used by the application for building native images.
 
 Next, we'll try to explore some more options how to configure the class initialization strategy for native images.
+
+<link href="../css/main.css" type="text/css" media="all" rel="stylesheet"></link>
