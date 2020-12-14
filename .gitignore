@@ -3,6 +3,7 @@
 **/build/
 **/reports/
 **/gradle/
+css/
 *.class
 2/complete/reflectionexample
 3/complete/main1

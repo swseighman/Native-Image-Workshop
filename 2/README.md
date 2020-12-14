@@ -1,15 +1,15 @@
 
 # Assisted Configuration for GraalVM Native Image
 
+<div>
 <img src="../images/noun_Stopwatch_14262.png"
-     style="display: inline; height: 2.5em;">
+     style="float: left; display: inline; height: 2.5em;">
 <strong style="margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-60%);
-  transform: translateY(-60%);">
+    position: relative;
+    top: 0.5em;">
   Estimated time: 10 minutes
 </strong>
+</div>
 
 
 ## The Closed World Assumption
@@ -191,7 +191,7 @@ Some things to bear in mind when using the tracing agent:
 Next, we'll try to explore some more options how to configure the class initialization strategy for native images.
 
 ---
-<a href="../3/README.md">
+<a href="../3/">
     <img src="../images/noun_Next_511450_100.png"
         style="display: inline; height: 6em;" />
 </a>

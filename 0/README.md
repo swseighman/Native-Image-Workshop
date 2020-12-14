@@ -48,7 +48,7 @@ Use a framework, as these are designed to ease the path:
 
 
 ---
-<a href="../1/README.md">
+<a href="../1/">
     <img src="../images/noun_Next_511450_100.png"
         style="display: inline; height: 6em;" />
 </a>
