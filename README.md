@@ -1,6 +1,7 @@
 # Native Imge Workshop
 GraalVM workshop instructions
 
+
 The instructions to install GraalVM can be found, for example, [here](https://docs.oracle.com/en/graalvm/enterprise/20/docs/getting-started/installation-linux/).
 The prerequsites for the native image component working are described in the [docs](https://docs.oracle.com/en/graalvm/enterprise/20/docs/reference-manual/enterprise-native-image/) as well.
 

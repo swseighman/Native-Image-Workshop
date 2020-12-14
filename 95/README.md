@@ -12,7 +12,7 @@ cd primes-web
 
 We have the project built and can run it with the `java` like this:
 
-```
+```shell script
 java -jar build/libs/primes-web-0.1-all.jar
 ```
 

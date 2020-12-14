@@ -1,4 +1,9 @@
 .idea/
 **/node_modules/
 **/build/
+**/reports/
+**/gradle/
 *.class
+2/complete/reflectionexample
+3/complete/main1
+.DS_Store
