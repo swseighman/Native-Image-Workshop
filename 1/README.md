@@ -3,8 +3,8 @@
 <img src="../images/noun_Stopwatch_14262.png"
      style="display: inline; height: 2.5em;">
 <strong style="margin: 0;
-  position: absolute;
-  top: 50%;
+  position: relative;
+  top: 10px;
   -ms-transform: translateY(-60%);
   transform: translateY(-60%);">
   Estimated time: 15 minutes
