@@ -7,6 +7,14 @@
 </strong>
 </div>
 
+<div class="inline-container">
+<img src="../images/noun_Book_3652476_100.png">
+<strong>References:</strong>
+</div>
+
+- [Native Image : Build a Native Image](https://www.graalvm.org/reference-manual/native-image/#build-a-native-image)
+
+
 ## Overview1
 GraalVM native image can process your application compiling it ahead of time into a standalone executable.
 
@@ -17,13 +25,6 @@ Some of the benefits you get from it are:
 * **Lower memory** footprint
 
 Let's take a look...
-
-<div class="inline-container">
-<img src="../images/noun_Book_3652476_100.png">
-<strong>References:</strong>
-</div>
-
-- [Native Image : Build a Native Image](https://www.graalvm.org/reference-manual/native-image/#build-a-native-image)
 
 ## Creating a Micronaut Application
 

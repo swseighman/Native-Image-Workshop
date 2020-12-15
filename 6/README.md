@@ -76,6 +76,7 @@ memory, this **does not** mean that this will happen, just that it could - here 
 > to 3.2GB. If the same image is executed on a machine that has 32GB of RAM, the maximum Java heap size will be set to 
 > 25.6GB. Note that this is just the maximum value. Depending on the application, the amount of actually used Java heap 
 > memory can be much lower. 
+
 ---
 
 For example run with the max heap size of 32M:
