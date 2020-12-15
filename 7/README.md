@@ -138,7 +138,7 @@ Run this new docker image:
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Shell Script](../images/noun_SH_File_272740_100.png)
 ```bash
-docker run --rm -p 8080:8080 --memory="256m" --memory-swap="256m" --cpus=1 primes-web:g1gc
+docker run -d --rm -p 8080:8080 --memory="512m" --memory-swap="512m" --cpus=1 primes-web:g1gc
 ```
 
 And apply the load as before:  
