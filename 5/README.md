@@ -199,7 +199,7 @@ Please take your time to explore it.
 Next, we'll try to explore various options for configuring the runtime for native images.
 
 ---
-<a href="../6/README.md">
+<a href="../6/">
     <img src="../images/noun_Next_511450_100.png"
         style="display: inline; height: 6em;" />
 </a>

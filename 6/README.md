@@ -111,7 +111,7 @@ Try using the application for a bit to trigger the GC, observe the logs trying t
 Next, we'll try to explore various options for configuring the runtime for native images.
 
 ---
-<a href="../7/README.md">
+<a href="../7/">
     <img src="../images/noun_Next_511450_100.png"
         style="display: inline; height: 6em;" />
 </a>

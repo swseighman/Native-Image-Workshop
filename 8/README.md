@@ -183,6 +183,4 @@ hey -z 60s http://localhost:8080/primes/random/100
 
 Explore the output.
 
-Next, we'll try to explore how to improve peak performance of application even further.
-
 ---

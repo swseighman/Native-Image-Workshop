@@ -158,7 +158,7 @@ build/native-image/application
 Next, we'll try to explore various other deployment options for native images.
 
 ---
-<a href="../5/README.md">
+<a href="../5/">
     <img src="../images/noun_Next_511450_100.png"
         style="display: inline; height: 6em;" />
 </a>

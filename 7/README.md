@@ -159,7 +159,7 @@ at the heap configuration.
 Next, we'll try to explore how to improve performance of the native images.
 
 ---
-<a href="../8/README.md">
+<a href="../8/">
     <img src="../images/noun_Next_511450_100.png"
         style="display: inline; height: 6em;" />
 </a>

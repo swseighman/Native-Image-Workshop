@@ -272,7 +272,7 @@ Correspondingly, you can use the `--initialize-at-run-time=package.C1` option to
 Next, we'll try to explore various deployment options for native images.
 
 ---
-<a href="../4/README.md">
+<a href="../4/">
     <img src="../images/noun_Next_511450_100.png"
         style="display: inline; height: 6em;" />
 </a>

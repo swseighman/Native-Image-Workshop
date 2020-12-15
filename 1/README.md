@@ -234,7 +234,7 @@ vs.
 Next, we'll try to explore some more options how to configure the build process for native images.
 
 ---
-<a href="../2/README.md">
+<a href="../2/">
     <img src="../images/noun_Next_511450_100.png"
         style="display: inline; height: 6em;" />
 </a>
