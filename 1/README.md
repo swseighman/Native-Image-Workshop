@@ -55,7 +55,7 @@ Java HotSpot(TM) 64-Bit Server VM GraalVM EE 20.3.0 (build 11.0.9+7-LTS-jvmci-20
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+```bash
 # Check that we have Native Image installed as well
 native-image --version
 GraalVM Version 20.3.0 EE (Java Version 11.0.9+7-LTS-jvmci-20.3-b06)
@@ -65,7 +65,7 @@ Now, create the application using Micronaut!
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+```bash
 mn create-cli-app primes; cd primes
 ```
 
@@ -75,7 +75,7 @@ Create and edit the `src/main/java/primes/PrimesComputer.java` file:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![User Input](../images/noun_java_825609_100.png)
-```Java
+```java
 package primes;
 
 import javax.inject.Singleton;
