@@ -8,6 +8,14 @@
 </strong>
 </div>
 
+<div class="inline-container">
+<img src="../images/noun_Stopwatch_14262_100.png">
+<strong>
+References:
+</strong>
+</div>
+
+- [Native Image : Class Initialization](https://www.graalvm.org/reference-manual/native-image/ClassInitialization/)
 
 ## The Closed World Assumption
 
@@ -27,15 +35,6 @@ What can information can we pass to the native image build?
 
 For example, classes and methods accessed through the Reflection API need to be configured. There are a few ways how 
 these can be configured, but the most convenient way is the assisted configuration javaagent.
-
-<div class="inline-container">
-<img src="../images/noun_Stopwatch_14262_100.png">
-<strong>
-References:
-</strong>
-</div>
-
-- [Native Image : Class Initialization](https://www.graalvm.org/reference-manual/native-image/ClassInitialization/)
 
 ## An Example
 

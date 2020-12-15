@@ -7,22 +7,21 @@
 </strong>
 </div>
 
-## Overview
-
-One of the great benefits of the JVM is the JIT (Just-In-Time) compiler. This allows a JVM to profile the code that is
-being run, adapt to the data flowing through an application and to improve and tweak the performance. 
-We shall continue to experiment on the example project we created before and look at how we can bring htis profiling 
-to Native Images
-
-## References
 <div class="inline-container">
-<img src="../images/noun_Stopwatch_14262_100.png">
+<img src="../images/noun_Book_3652476_100.png">
 <strong>
 References:
 </strong>
 </div>
 
 - [Native Image Profile Guided Optimisations](https://www.graalvm.org/reference-manual/native-image/PGO/)
+
+## Overview
+
+One of the great benefits of the JVM is the JIT (Just-In-Time) compiler. This allows a JVM to profile the code that is
+being run, adapt to the data flowing through an application and to improve and tweak the performance. 
+We shall continue to experiment on the example project we created before and look at how we can bring htis profiling 
+to Native Images
 
 ## Our Application
 Locate the sample project we created:
