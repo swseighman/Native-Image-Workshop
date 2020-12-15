@@ -1,7 +1,7 @@
 # Building a Simple GraalVM Native Image
 
 <div class="inline-container">
-<img src="../images/noun_Stopwatch_14262.png">
+<img src="../images/noun_Stopwatch_14262_100.png">
 <strong>
   Estimated time: 15 minutes
 </strong>
