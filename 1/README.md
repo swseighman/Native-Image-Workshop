@@ -1,4 +1,4 @@
-# Building a Simple GraalVM Native Image
+# 01 : Building a Simple GraalVM Native Image
 
 <div class="inline-container">
 <img src="../images/noun_Stopwatch_14262_100.png">
@@ -15,7 +15,7 @@
 - [Native Image : Build a Native Image](https://www.graalvm.org/reference-manual/native-image/#build-a-native-image)
 
 
-## Overview1
+## Overview
 GraalVM native image can process your application compiling it ahead of time into a standalone executable.
 
 Some of the benefits you get from it are:

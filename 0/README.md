@@ -1,6 +1,4 @@
-# GraalVM Native Image
-
-## What is Native Image
+# 00: What is Native Image
 
 A very simple, and short, descripton of what Native Image might be:
 
