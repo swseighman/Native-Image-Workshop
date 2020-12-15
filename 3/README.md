@@ -7,6 +7,17 @@
 </strong>
 </div>
 
+<div class="inline-container">
+<img src="../images/noun_Book_3652476_100.png">
+<strong>
+References:
+</strong>
+</div>
+
+- [Native Image : Class Initialization](https://www.graalvm.org/reference-manual/native-image/ClassInitialization/)
+- [Build-Time Initialization of Native Image Runtime](https://www.graalvm.org/reference-manual/native-image/ClassInitialization/#build-time-initialization-of-native-image-runtime)
+- [Automatic Initialization of Safe Classes](https://www.graalvm.org/reference-manual/native-image/ClassInitialization/#automatic-initialization-of-safe-classes)
+
 ## Overview
 
 One of the most misunderstood features of native image is the class initialization strategy.
@@ -17,7 +28,9 @@ Here we'll try to explain it a little.
 two parts:
   * Build time
   * Run time.
-* Known **safe** classes are initialised at Build Time
+* Build Time Intitialised Classes:
+    * Important JDK Class, GC< depotimiser
+    * Known **safe** classes are initialised at Build Time
 * By default other classes are initialized at runtime
 * But you can initialize at runtime - if you want to
 
@@ -25,8 +38,8 @@ We will look into this in more detail in the following.
 
 ## An Example
 
-Let's explore an example application that consists of a few classes to better understand the implications of initialisation at
-`run-time` or `build-time` and how we can configure the initialisation strategy.
+Let's explore an example application that consists of a few classes to better understand the implications of 
+initialisation at `run-time` or `build-time` and how we can configure the initialisation strategy.
 
 Here's our program - you can create these files to follow along:
 
@@ -140,31 +153,36 @@ com.oracle.svm.core.containers.cgroupv2.CgroupV2Subsystem
 
 Which are used for determining the V1/V2 cgroup resources availability when running in containers.
 
-And also our classes `A` and `B`. Initializing the class means running it's `<clinit>` so it tries to load the charset and it breaks at runtime.
+And also our classes `A` and `B`. Initializing the class means running it's `<clinit>` so it tries to load the charset 
+and it breaks at runtime.
 
 ## Moving to Build Time Initialisation
 
-What if we move the initialization of these classes to build time? This will succeed because build time is a Java process and it'll load the charset without any problems - all of the charsets are avilable to the Java process that is doing the native image build.
+What if we move the initialization of these classes to build time? This will succeed because build time is a Java 
+process and it'll load the charset without any problems - all of the charsets are avilable to the Java process that is 
+doing the native image build.
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Shell Script](../images/noun_SH_File_272740_100.png)
 ```bash
-native-image --initialize-at-build-time=A,B -cp . Main0
+native-image --no-fallback --initialize-at-build-time=A,B -cp . Main0 main0-works
 ```
 
-The classes are initialized at build time, the Chatset instance is written out to the image heap and can be used at runtime.
+The classes are initialized at build time, the Chatset instance is written out to the image heap and can be used at 
+runtime.
 
 Run the native image application again, in order to confirm that this now does work as expected:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Shell Script](../images/noun_SH_File_272740_100.png)
 ```bash
-./main0
+./main0-works
 ```
 
 ## When You Can't Initialise at Runtime
 
-Sometimes objects instantiated during the build class initialization cannot be initialised ar `build-time` and written to the image heap.
+Sometimes objects instantiated during the build class initialization cannot be initialised ar `build-time` and written 
+to the image heap.
 
 When classes contain any of the following, they can't be written to the image heap:
 
@@ -191,7 +209,6 @@ public class Main1 {
     System.out.println(A.t);
   }
 }
-
 
 class A {
 
@@ -227,7 +244,7 @@ Building the native image like before will now fail, but please notice the build
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Shell Script](../images/noun_SH_File_272740_100.png)
 ```bash
-native-image --no-fallback --initialize-at-build-time=A,B -cp . Main1
+native-image --no-fallback --initialize-at-build-time=A,B -cp . Main1 main1-fails
 ```
 
 This is the error you will see:
@@ -251,14 +268,14 @@ it's good to have initialize only `B` at build time.
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Shell Script](../images/noun_SH_File_272740_100.png)
 ```bash
-native-image --no-fallback --initialize-at-build-time=B -cp . Main1
+native-image --no-fallback --initialize-at-build-time=B -cp . Main1 main1-b-at-buildtime
 ```
 This now builds and we can run it. Running it will take 30 seconds now because of the added `Thread.sleep`
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Shell Script](../images/noun_SH_File_272740_100.png)
 ```bash
-./main1
+./main1-b-at-buildtime
 UTF-32LE
 Thread[Thread-0,5,main]
 ~/init-strategy

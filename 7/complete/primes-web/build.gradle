@@ -37,6 +37,10 @@ java {
     targetCompatibility = JavaVersion.toVersion("1.8")
 }
 
+nativeImage {
+    args("--gc=G1")
+}
+
 tasks {
 
 

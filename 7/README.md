@@ -7,20 +7,20 @@
 </strong>
 </div>
 
-## Overview
-
-In the previous parts of this workshop we've built a small microservice that can respond to HTTP traffic.
-
-Let's add to this and see how we what options for GC GraalVM has.
-
 <div class="inline-container">
-<img src="../images/noun_Stopwatch_14262_100.png">
+<img src="../images/noun_Book_3652476_100.png">
 <strong>
 References:
 </strong>
 </div>
 
 - [Native Image : Memory Management at Image Runtime](https://www.graalvm.org/reference-manual/native-image/MemoryManagement/)
+
+## Overview
+
+In the previous parts of this workshop we've built a small microservice that can respond to HTTP traffic.
+
+Let's add to this and see how we what options for GC GraalVM has.
 
 ## Update our Application
 
@@ -78,7 +78,7 @@ hey -z 60s http://localhost:8080/primes/random/100
 
 ## Stressing Our Dockerised Application
 
-However it makes sense to limit the available resources to simulate more cloud like deployment.
+However it makes sense to limit the available resources to simulate a more cloud like deployment.
 
 We'll use the docker image we've built before.
 
@@ -87,7 +87,7 @@ Run the following command to run the native image of our application:
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Shell Script](../images/noun_SH_File_272740_100.png)
 ```bash
-docker run --rm -p 8080:8080 --memory="256m" --memory-swap="256m" --cpus=1 primes-web:slim
+docker run -d --rm -p 8080:8080 --memory="256m" --memory-swap="256m" --cpus=1 primes-web:slim
 ```
 
 Note we're restricting the memory to 256m, disable the swap and limit it to have 1 CPU. It's a pretty 
@@ -111,17 +111,21 @@ nativeImage {
 }
 ```
 
-Run the build:
-
-![User Input](../images/noun_Computer_3477192_100.png)
-![Shell Script](../images/noun_SH_File_272740_100.png)
-```bash
-./gradlew nativeImage
-```
-
 In this new native image we have enabled the `G1GC` Garbage Collector.
- 
-We can use the same `Dockerfile.slim` to build the image (the app on the host has changed):
+
+---
+![User Input](../images/noun_bulb_1912576_100.png)
+
+The build now requires an **Enterprise Edition ONLY** feature. As the Enterprise Edition is licensed under the OTN
+license, we are not able to redistribute it, so we can't build a docker image that contains Enterprise Edition and 
+upload it to Dockerhub for public download. We will therefore need to build our own Enterprise Edition Docker image.
+This is not very difficult and in my docker file fo rthe builds I will be referencing my own private docker image.
+
+Please note that you will need to add your own base image ot the docker file to build this.
+
+--- 
+
+Run the build - we are using a 2-step docker file to do the build:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Shell Script](../images/noun_SH_File_272740_100.png)

@@ -47,7 +47,17 @@ objects are handled by a GC implementation that is contained within the native i
 
 You can configure the heap configuration options similar to running Java application on HotSpot.
 
-Use the `-Xmx` and `-Xmn` options to configure the heap size and the young generation size for your application.
+Use the `-Xmx` and `-Xmn` options to configure the heap size and the young generation size for your application. Here
+is an example:
+
+![User Input](../images/noun_Computer_3477192_100.png)
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
+./build/native-image/application -Xmx64M
+
+# visit this in your browser
+# http://localhost:8080/primes/random/200
+```
 
 Explore various options to see how low can you go without crashing? or with still reasonably decent startup time 
 (<100ms)? Be aware though, everything is a trde off. A native image runs using much less than a Java process would, but 
@@ -87,7 +97,8 @@ For example run with the max heap size of 32M:
 ./build/native-image/application -Xmx32m
 ```
 
-The default values for these options are: 8M for the young generation, unlimited (limited by the hw resources) for the max heap size. You can control it with the `-XX:MaximumHeapSizePercent` option.
+The default values for these options are: 8M for the young generation, unlimited (limited by the hw resources) for the 
+max heap size. You can control it with the `-XX:MaximumHeapSizePercent` option.
 
 Enable the logging for GC using the following flags - this may help if you want to understand what is happening in the
 heap:

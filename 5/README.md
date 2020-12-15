@@ -79,13 +79,36 @@ ldd ./build/native-image/application
 Let's package it into a docker image. One of the benefits of the native image is that it offers smaller deployment 
 sizes, so we'll use a `slim` image.
 
+**NOTE**: We will use a docker based build, as on a mac the binary built will not work when added to the linux
+docker container - see the note earlier. We will use a 2-step docker build. The first will build the binary and the
+second will copy the binary from the image built in step 1.
+
 Create a `Dockerfile.slim` file with the following:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Docker](../images/noun_Cloud_Docker_676618_100.png)
 ```dockerfile
+FROM oracle/graalvm-ce:20.3.0-java11 AS builder
+
+# Here we are using GraalVM CE - but you don't have to.
+# There is not yet a public GraalVM EE docker image that you can download,
+# but you can make your own easily
+
+RUN gu install native-image
+RUN mkdir app
+COPY . /app
+WORKDIR app
+
+# Build the Jar
+RUN ./gradlew build
+
+# Build the Native Image
+RUN ./gradlew nativeImage
+
+# Step 2 : build the image that will run
+
 FROM oraclelinux:8-slim
-COPY build/native-image/application app
+COPY --from=builder app/build/native-image/application app
 ENTRYPOINT ["/app"]
 ```
 
@@ -113,6 +136,9 @@ The image doesn't have much except our application. We can still run it and acce
 ![Shell Script](../images/noun_SH_File_272740_100.png)
 ```bash
 docker run --rm -p 8080:8080 primes-web:slim
+
+# visit the following URL in your browser
+# http://localhost:8080/primes/random/200
 ```
 
 ## Tiny Docker Containers
@@ -131,28 +157,30 @@ nativeImage {
 }
 ```
 
-Build it again and explore the output of `ldd`:
-
-![User Input](../images/noun_Computer_3477192_100.png)
-![Shell Script](../images/noun_SH_File_272740_100.png)
-```bash
-./gradlew nativeImage
-```
-
-![User Input](../images/noun_Computer_3477192_100.png)
-![Shell Script](../images/noun_SH_File_272740_100.png)
-```bash
-ldd ./build/native-image/application
-```
-
 We will use Distroless as our base. Distroless is a very minimal container distro. We can now package our app into an 
 even smaller docker image. Let's call this `Dockerfile.distroless`
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Docker](../images/noun_Cloud_Docker_676618_100.png)
 ```dockerfile
+FROM oracle/graalvm-ce:20.3.0-java11 AS builder
+
+# Here we are using GraalVM CE - but you don't have to.
+# There is not yet a public GraalVM EE docker image that you can download,
+# but you can make your own easily
+
+RUN gu install native-image
+RUN mkdir app
+COPY . /app
+WORKDIR app
+
+# Build the Jar
+RUN ./gradlew build
+# Build the Native Image
+RUN ./gradlew nativeImage
+
 FROM gcr.io/distroless/base
-COPY build/native-image/application app
+COPY --from=builder app/build/native-image/application app
 ENTRYPOINT ["/app"]
 ```
 

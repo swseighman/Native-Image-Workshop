@@ -9,7 +9,6 @@ public class Main1 {
     }
 }
 
-
 class A {
 
     public static B b = new B();

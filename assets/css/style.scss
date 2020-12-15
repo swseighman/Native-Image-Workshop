@@ -17,3 +17,11 @@
     display: inline-block;
     width: 2.5em;
 }
+
+.site-title::before {
+	content: url("images/noun_lab_3020051.png");
+	display: inline-block;
+	position: relative;
+	width: 37px;
+	top: 5px;
+}

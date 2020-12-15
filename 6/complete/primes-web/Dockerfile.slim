@@ -1,3 +1,20 @@
+FROM oracle/graalvm-ce:20.3.0-java11 AS builder
+
+# Here we are using GraalVM CE - but you don't have to.
+# There is not yet a public GraalVM EE docker image that you can download,
+# but you can make your own easily
+
+RUN gu install native-image
+RUN mkdir app
+COPY . /app
+WORKDIR app
+
+# Build the Jar
+RUN ./gradlew build
+
+# Build the Native Image
+RUN ./gradlew nativeImage
+
 FROM oraclelinux:8-slim
-COPY build/native-image/application app
+COPY --from=builder app/build/native-image/application app
 ENTRYPOINT ["/app"]

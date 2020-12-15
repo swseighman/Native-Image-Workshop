@@ -9,7 +9,7 @@
 </div>
 
 <div class="inline-container">
-<img src="../images/noun_Stopwatch_14262_100.png">
+<img src="../images/noun_Book_3652476_100.png">
 <strong>
 References:
 </strong>

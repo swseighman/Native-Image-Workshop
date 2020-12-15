@@ -38,7 +38,7 @@ java {
 }
 
 nativeImage {
-    //args("-H:+StaticExecutableWithDynamicLibC")
+    args("-H:+StaticExecutableWithDynamicLibC")
 }
 
 tasks {
