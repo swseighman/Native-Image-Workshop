@@ -36,16 +36,16 @@ First, let's make sure that we have (and they are the latest versions) the tools
 - GraalVM EE, 20.3.0
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 # Check Micronaut version
 mn --version
 Micronaut Version: 2.2.0
 ```
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 # Check Java version
 java --version
 java 11.0.9 2020-10-20 LTS
@@ -54,7 +54,7 @@ Java HotSpot(TM) 64-Bit Server VM GraalVM EE 20.3.0 (build 11.0.9+7-LTS-jvmci-20
 ```
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
+![Shell Script](../images/noun_SH_File_272740_100.png)
 ```bash
 # Check that we have Native Image installed as well
 native-image --version
@@ -64,7 +64,7 @@ GraalVM Version 20.3.0 EE (Java Version 11.0.9+7-LTS-jvmci-20.3-b06)
 Now, create the application using Micronaut!
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
+![Shell Script](../images/noun_SH_File_272740_100.png)
 ```bash
 mn create-cli-app primes; cd primes
 ```
@@ -74,7 +74,7 @@ mn create-cli-app primes; cd primes
 Create and edit the `src/main/java/primes/PrimesComputer.java` file:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_java_825609_100.png)
+![Java](../images/noun_java_825609_100.png)
 ```java
 package primes;
 
@@ -109,8 +109,8 @@ public class PrimesComputer {
 Edit the `src/main/java/primes/PrimesCommand.java` file:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_java_825609_100.png)
-```Java
+![Java](../images/noun_java_825609_100.png)
+```java
 package primes;
 
 import io.micronaut.configuration.picocli.PicocliRunner;
@@ -150,8 +150,8 @@ public class PrimesCommand implements Runnable {
 Remove the tests because we changed the functionality of the main command:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 rm src/test/java/primes/PrimesCommandTest.java
 ```
 
@@ -160,16 +160,16 @@ rm src/test/java/primes/PrimesCommandTest.java
 Now we can build this Micronaut project to get the jar file with our functionality:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./gradlew build
 ```
 
 Test the application that it prints the prime numbers:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 java -jar build/libs/primes-0.1-all.jar -n 1 -l 100
 [53, 59, 61, 67, 71, 73]
 ```
@@ -179,8 +179,8 @@ java -jar build/libs/primes-0.1-all.jar -n 1 -l 100
 Now you can build the native image too:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./gradlew nativeImage
 ```
 
@@ -193,24 +193,24 @@ You can find the resulting executable in `build/native-image/application`.
 Inspect it with the `ldd` utility and check that it's linked to the OS libraries.
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 # On linux
 ldd build/native-image/application
 ```
 If you are on a mac, then you will need to use the `otool`, as below:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 # On OsX
 otool -l build/native-image/application
 ```
 Take a look at its file type:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 file build/native-image/application
 ```
 
@@ -219,15 +219,15 @@ file build/native-image/application
 If you have GNU time utility (`brew install gnu-time` on Macos), you can time the execution and the memory usage of the process. Compare the following:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 /usr/bin/time -v java -jar build/libs/primes-0.1-all.jar -n 1 -l 100
 ```
 vs.
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 /usr/bin/time -v build/native-image/application -n 1 -l 100
 ```
 
