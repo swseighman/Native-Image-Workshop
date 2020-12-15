@@ -1,5 +1,5 @@
 
-# Assisted Configuration for GraalVM Native Image
+# 02 : Assisted Configuration for GraalVM Native Image
 
 <div class="inline-container">
 <img src="../images/noun_Stopwatch_14262_100.png">

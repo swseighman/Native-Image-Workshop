@@ -1,4 +1,4 @@
-# Class Initialization Strategy for GraalVM Native Image
+# 03 : Class Initialization Strategy for GraalVM Native Image
 
 <div class="inline-container">
 <img src="../images/noun_Stopwatch_14262_100.png">

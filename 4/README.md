@@ -1,4 +1,4 @@
-# Smaller Deployment Options for GraalVM Native Image
+# 04 : Smaller Deployment Options for GraalVM Native Image
 
 <div class="inline-container">
 <img src="../images/noun_Stopwatch_14262_100.png">

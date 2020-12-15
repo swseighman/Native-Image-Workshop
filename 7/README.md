@@ -1,4 +1,4 @@
-# GC options for GraalVM native image
+# 07 : GC options for GraalVM native image
 
 <div class="inline-container">
 <img src="../images/noun_Stopwatch_14262_100.png">

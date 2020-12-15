@@ -1,4 +1,4 @@
-# Profile Guided Optimizations for GraalVM Native Image
+# 08 : Profile Guided Optimizations for GraalVM Native Image
 
 <div class="inline-container">
 <img src="../images/noun_Stopwatch_14262_100.png">

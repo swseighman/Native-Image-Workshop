@@ -1,4 +1,4 @@
-# Deployment Options for GraalVM Native Images
+# 05 : Deployment Options for GraalVM Native Images
 
 <div class="inline-container">
 <img src="../images/noun_Stopwatch_14262_100.png">

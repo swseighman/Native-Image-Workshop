@@ -1,4 +1,4 @@
-# Configuring Memory Used by GraalVM Native Images
+# 06 : Configuring Memory Used by GraalVM Native Images
 
 <div class="inline-container">
 <img src="../images/noun_Stopwatch_14262_100.png">
