@@ -20,8 +20,8 @@ References:
 
 One of the great benefits of the JVM is the JIT (Just-In-Time) compiler. This allows a JVM to profile the code that is
 being run, adapt to the data flowing through an application and to improve and tweak the performance. 
-We shall continue to experiment on the example project we created before and look at how we can bring htis profiling 
-to Native Images
+We shall continue to experiment on the example project we created before and look at how we can bring this profiling 
+to Native Images. This is an **Enterprise Edition ONLY** feature.
 
 ## Our Application
 Locate the sample project we created:
