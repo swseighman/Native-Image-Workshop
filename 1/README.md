@@ -1,13 +1,8 @@
 # Building a Simple GraalVM Native Image
 
 <div class="inline">
-<img src="../images/noun_Stopwatch_14262.png"
-     style="display: inline; height: 2.5em;">
-<strong style="margin: 0;
-  position: relative;
-  top: 10px;
-  -ms-transform: translateY(-60%);
-  transform: translateY(-60%);">
+<img src="../images/noun_Stopwatch_14262.png">
+<strong>
   Estimated time: 15 minutes
 </strong>
 </div>
