@@ -1,12 +1,9 @@
 
 # Assisted Configuration for GraalVM Native Image
 
-<div>
-<img src="../images/noun_Stopwatch_14262.png"
-     style="float: left; display: inline; height: 2.5em;">
-<strong style="margin: 0;
-    position: relative;
-    top: 0.5em;">
+<div class="inline-container">
+<img src="../images/noun_Stopwatch_14262_100.png">
+<strong>
   Estimated time: 10 minutes
 </strong>
 </div>
@@ -31,15 +28,12 @@ What can information can we pass to the native image build?
 For example, classes and methods accessed through the Reflection API need to be configured. There are a few ways how 
 these can be configured, but the most convenient way is the assisted configuration javaagent.
 
-<img src="../images/noun_Book_3652476_100.png"
-     style="display: inline; height: 2.5em;">
-<strong style="margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-60%);
-  transform: translateY(-60%);">
+<div class="inline-container">
+<img src="../images/noun_Stopwatch_14262_100.png">
+<strong>
 References:
 </strong>
+</div>
 
 - [Native Image : Class Initialization](https://www.graalvm.org/reference-manual/native-image/ClassInitialization/)
 

@@ -1,14 +1,11 @@
 # Configuring Memory Used by GraalVM Native Images
 
-<img src="../images/noun_Stopwatch_14262.png"
-     style="display: inline; height: 2.5em;">
-<strong style="margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-60%);
-  transform: translateY(-60%);">
+<div class="inline-container">
+<img src="../images/noun_Stopwatch_14262_100.png">
+<strong>
   Estimated time: 5 minutes
 </strong>
+</div>
 
 ## Overview
 

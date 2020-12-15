@@ -1,14 +1,11 @@
 # GC options for GraalVM native image
 
-<img src="../images/noun_Stopwatch_14262.png"
-     style="display: inline; height: 2.5em;">
-<strong style="margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-60%);
-  transform: translateY(-60%);">
+<div class="inline-container">
+<img src="../images/noun_Stopwatch_14262_100.png">
+<strong>
   Estimated time: 15 minutes
 </strong>
+</div>
 
 ## Overview
 
@@ -16,15 +13,12 @@ In the previous parts of this workshop we've built a small microservice that can
 
 Let's add to this and see how we what options for GC GraalVM has.
 
-<img src="../images/noun_Book_3652476_100.png"
-     style="display: inline; height: 2.5em;">
-<strong style="margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-60%);
-  transform: translateY(-60%);">
+<div class="inline-container">
+<img src="../images/noun_Stopwatch_14262_100.png">
+<strong>
 References:
 </strong>
+</div>
 
 - [Native Image : Memory Management at Image Runtime](https://www.graalvm.org/reference-manual/native-image/MemoryManagement/)
 
