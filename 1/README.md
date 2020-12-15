@@ -1,5 +1,6 @@
 # Building a Simple GraalVM Native Image
 
+<div class="inline">
 <img src="../images/noun_Stopwatch_14262.png"
      style="display: inline; height: 2.5em;">
 <strong style="margin: 0;
@@ -9,7 +10,7 @@
   transform: translateY(-60%);">
   Estimated time: 15 minutes
 </strong>
-
+</div>
 
 ## Overview1
 GraalVM native image can process your application compiling it ahead of time into a standalone executable.

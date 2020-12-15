@@ -1,0 +1,9 @@
+---
+---
+@import "{{ site.theme }}";
+
+div.inline > img,
+div.inline > string {
+    border: 2px doted red;
+    display: inline-block;
+}
