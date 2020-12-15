@@ -27,24 +27,24 @@ References:
 Locate the sample project we created:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 cd primes-web
 ```
 
 If you haven't done it yet, build the app:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./gradlew build
 ```
 
 If necessary, build the native image of it again:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./gradlew nativeImage
 ```
 
@@ -63,16 +63,16 @@ Run your app (use `&` at the end to make it run in the background or use 2 termi
 commands in parallel):
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./build/native-image/application &
 ```
 
 Run the load tool for 60s to get the measurements.
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 hey -z 60s http://localhost:8080/primes/random/100
 ```
 
@@ -85,8 +85,8 @@ We'll use the docker image we've built before.
 Run the following command to run the native image of our application:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 docker run --rm -p 8080:8080 --memory="256m" --memory-swap="256m" --cpus=1 primes-web:slim
 ```
 
@@ -94,8 +94,8 @@ Note we're restricting the memory to 256m, disable the swap and limit it to have
 constrained environment. Now you can get the measurement, using the similar `hey` command:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 hey -z 60s http://localhost:8080/primes/random/100
 ```
 
@@ -104,8 +104,8 @@ hey -z 60s http://localhost:8080/primes/random/100
 Edit the `build.gradle` file to include the following `nativeImage` section:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![File](../images/noun_File_3647224_100.png)
+```groovy
 nativeImage {
   args("--gc=G1")
 }
@@ -114,8 +114,8 @@ nativeImage {
 Run the build:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./gradlew nativeImage
 ```
 
@@ -124,24 +124,24 @@ In this new native image we have enabled the `G1GC` Garbage Collector.
 We can use the same `Dockerfile.slim` to build the image (the app on the host has changed):
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 docker build -f Dockerfile.slim -t primes-web:g1gc .
 ```
 
 Run this new docker image:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 docker run --rm -p 8080:8080 --memory="256m" --memory-swap="256m" --cpus=1 primes-web:g1gc
 ```
 
 And apply the load as before:  
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 hey -z 60s http://localhost:8080/primes/random/100
 ```
 

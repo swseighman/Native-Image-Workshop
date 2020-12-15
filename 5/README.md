@@ -13,7 +13,7 @@ In the previous part we've build a small microservice that can respond to the HT
 Let's continue using it and try to explore some options how we can deploy it differently.
 
 ---
-![User Input](../images/noun_bulb_1912576_100.png)
+![Note](../images/noun_bulb_1912576_100.png)
 
 ## A Note on Building on OSX
 
@@ -24,8 +24,8 @@ build on a mac, you get a mac executable.
 You will, from time to time, forget this and then you will see the following error when you deploy your app into a docker
 container:
 
-![User Input](../images/noun_bulb_1912576_100.png)
-![User Input](../images/noun_protest_sign_2029359_100.png)
+![Note](../images/noun_bulb_1912576_100.png)
+![Error Message](../images/noun_protest_sign_2029359_100.png)
 ```text
 standard_init_linux.go:211: exec user process caused "exec format error"
 ```
@@ -36,16 +36,16 @@ standard_init_linux.go:211: exec user process caused "exec format error"
 Locate the sample project we created - there's a copy of this in the current folder:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 cd primes-web
 ```
 
 If you haven't done it yet, build the app:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./gradlew build
 ```
 
@@ -53,24 +53,24 @@ Build the native image of it again (let's not use the upxed version, if you used
 executable should be in `build/native-image/application.~`).
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./gradlew nativeImage
 ```
 
 And locate the binary of the app (if needed move the upx backup file: `mv build/native-image/application.~ build/native-image/application`):
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./build/native-image/application
 ```
 
 Explore the output of `ldd` to check which libraries it's linked against:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ldd ./build/native-image/application
 ```
 
@@ -82,7 +82,7 @@ sizes, so we'll use a `slim` image.
 Create a `Dockerfile.slim` file with the following:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_Cloud_Docker_676618_100.png)
+![Docker](../images/noun_Cloud_Docker_676618_100.png)
 ```dockerfile
 FROM oraclelinux:8-slim
 COPY build/native-image/application app
@@ -92,8 +92,8 @@ ENTRYPOINT ["/app"]
 Build the image:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 docker build -f Dockerfile.slim -t primes-web:slim .
 ```
 
@@ -102,16 +102,16 @@ Install the `dive` utility to inspect the images: https://github.com/wagoodman/d
 Run it on the new image and explore the output:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 dive primes-web:slim
 ```
 
 The image doesn't have much except our application. We can still run it and access the app on port 8080.
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 docker run --rm -p 8080:8080 primes-web:slim
 ```
 
@@ -124,7 +124,7 @@ Edit the `build.gradle` file to configure the native-image use through the Micro
 following section:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_File_3647224_100.png)
+![File](../images/noun_File_3647224_100.png)
 ```groovy
 nativeImage {
   args("-H:+StaticExecutableWithDynamicLibC")
@@ -134,21 +134,22 @@ nativeImage {
 Build it again and explore the output of `ldd`:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./gradlew nativeImage
 ```
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SHldd ./build/native-image/application
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
+ldd ./build/native-image/application
 ```
 
 We will use Distroless as our base. Distroless is a very minimal container distro. We can now package our app into an 
 even smaller docker image. Let's call this `Dockerfile.distroless`
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_Cloud_Docker_676618_100.png)
+![Docker](../images/noun_Cloud_Docker_676618_100.png)
 ```dockerfile
 FROM gcr.io/distroless/base
 COPY build/native-image/application app
@@ -158,24 +159,25 @@ ENTRYPOINT ["/app"]
 Build the image and explore it with `dive`:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 docker build -f Dockerfile.distroless -t primes-web:distroless .
 ```
 
 Look at the image efficiency score!
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 dive primes-web:distroless
 ```
 
 Running it is just as simple:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SHdocker run --rm -p 8080:8080 primes-web:distroless
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
+docker run --rm -p 8080:8080 primes-web:distroless
 ```
 
 Use the app a few times, explore the docker container stats in `docker stats` or some monitoring service like `cadvisor`.

@@ -17,24 +17,24 @@ Let's continue using it and try to explore some other deployment options.
 Locate the sample project we created:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 cd primes-web
 ```
 
 If you haven't done it yet, build the app:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./gradlew build
 ```
 
 If necessary, build the native image of it again:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./gradlew nativeImage
 ```
 
@@ -56,7 +56,8 @@ for memory usage.
 
 
 ---
-![User Input](../images/noun_bulb_1912576_100.png)
+![Note](../images/noun_bulb_1912576_100.png)
+
 ### In Which Certain Naive Assumptions About Memory Usage are Shown to Require More Subtelty
 
 Another point to consider : Although Native Images use less memory than a Java process requires, if your app loads a lot
@@ -80,8 +81,8 @@ memory, this **does not** mean that this will happen, just that it could - here 
 For example run with the max heap size of 32M:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./build/native-image/application -Xmx32m
 ```
 
@@ -91,8 +92,8 @@ Enable the logging for GC using the following flags - this may help if you want 
 heap:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 -XX:+PrintGC - print basic information for every garbage collection
 -XX:+VerboseGC - can be added to print further garbage collection details
 ```
@@ -100,8 +101,8 @@ heap:
 Try using the application for a bit to trigger the GC, observe the logs trying to make sense of them.
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./build/native-image/application -XX:+PrintGC -XX:+VerboseGC -Xmx32m
 ```
 

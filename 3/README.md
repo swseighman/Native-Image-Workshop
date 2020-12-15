@@ -31,8 +31,8 @@ Let's explore an example application that consists of a few classes to better un
 Here's our program - you can create these files to follow along:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_java_825609_100.png)
-```Java
+![Java](../images/noun_java_825609_100.png)
+```java
 import java.nio.charset.*;
 
 
@@ -67,8 +67,8 @@ holding a reference to a Charset - `UTF-32LE`.
 Run it:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 # Compile it
 javac Main0.java
 
@@ -79,16 +79,16 @@ java Main0
 Now build a native image of it, run it, and take a look at what happens:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 native-image -cp . Main0
 ./main0
 ```
 
 It breaks, with the following exception, because the Charset `UTF_32_LE` is not by default included in the native image  and is thus not found at runtime. **Note** Not all Charsets are added to native images, adding them is a deliberate step and this helps to reduce image size:
 
-![User Input](../images/noun_protest_sign_2029359_100.png)
-```Java
+![Error Message](../images/noun_protest_sign_2029359_100.png)
+```java
 Exception in thread "main" java.lang.ExceptionInInitializerError
 	at com.oracle.svm.core.classinitialization.ClassInitializationInfo.initialize(ClassInitializationInfo.java:291)
 	at A.<clinit>(Main.java:15)
@@ -106,8 +106,8 @@ Caused by: java.nio.charset.UnsupportedCharsetException: UTF-32LE
 One way to resolve this issue is to include all charsets:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 native-image -H:+AddAllCharsets -cp . Main0
 ```
 
@@ -117,23 +117,23 @@ We're more interested in the class init details right now and adding all of the 
 to solve our problem. Let's use the `-H:+PrintClassInitialization` to check how the classes are initialized:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 native-image -H:+PrintClassInitialization -cp . Main0
 ```
 
 Check the output:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 cat reports/run_time_classes_*
 ```
 
 You can for example see classes such as:
 
-![User Input](../images/noun_File_3647224_100.png)
-```SH
+![File](../images/noun_File_3647224_100.png)
+```bash
 com.oracle.svm.core.containers.cgroupv1.CgroupV1Subsystem
 com.oracle.svm.core.containers.cgroupv2.CgroupV2Subsystem
 ```
@@ -147,8 +147,8 @@ And also our classes `A` and `B`. Initializing the class means running it's `<cl
 What if we move the initialization of these classes to build time? This will succeed because build time is a Java process and it'll load the charset without any problems - all of the charsets are avilable to the Java process that is doing the native image build.
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 native-image --initialize-at-build-time=A,B -cp . Main0
 ```
 
@@ -157,8 +157,8 @@ The classes are initialized at build time, the Chatset instance is written out t
 Run the native image application again, in order to confirm that this now does work as expected:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./main0
 ```
 
@@ -179,8 +179,8 @@ runtime, but be aware that there may be a chain of dependencies that caused that
 For example, if we modify the code to be as below, what will happen when we build?
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_java_825609_100.png)
-```Java
+![Java](../images/noun_java_825609_100.png)
+```java
 import java.nio.charset.*;
 
 
@@ -225,15 +225,15 @@ class B {
 Building the native image like before will now fail, but please notice the build error:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 native-image --no-fallback --initialize-at-build-time=A,B -cp . Main1
 ```
 
 This is the error you will see:
 
-![User Input](../images/noun_protest_sign_2029359_100.png)
-```Java
+![Error Message](../images/noun_protest_sign_2029359_100.png)
+```java
 Error: Detected a started Thread in the image heap. Threads running in the image generator are no longer running at image run time.  To see how this object got instantiated use -H:+TraceClassInitialization. The object was probably created by a class initializer and is reachable from a static field. You can request class initialization at image run time by using the option --initialize-at-run-time=<class-name>. Or you can write your own initialization methods and call them explicitly from your main entry point.
 Detailed message:
 Trace: Object was reached by
@@ -249,15 +249,15 @@ Balancing initialization can be a bit tricky, so by default GraalVM initializes 
 it's good to have initialize only `B` at build time.
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 native-image --no-fallback --initialize-at-build-time=B -cp . Main1
 ```
 This now builds and we can run it. Running it will take 30 seconds now because of the added `Thread.sleep`
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./main1
 UTF-32LE
 Thread[Thread-0,5,main]

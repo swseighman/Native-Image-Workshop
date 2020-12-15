@@ -42,8 +42,8 @@ References:
 Imagine you have a class like this in the `ReflectionExample.java`:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_java_825609_100.png)
-```Java
+![Java](../images/noun_java_825609_100.png)
+```java
 import java.lang.reflect.Method;
 
 class StringReverser {
@@ -76,8 +76,8 @@ The main method invokes all methods whose names are passed in as command line ar
 Run it normally and explore the output.
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 java ReflectionExample StringReverser reverse "hello"
 ```
 
@@ -86,8 +86,8 @@ As expected, the method `foo` was found via reflection, but the non-existent met
 Let's build a native image out of it:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 native-image --no-fallback ReflectionExample
 ```
 
@@ -96,8 +96,8 @@ native-image --no-fallback ReflectionExample
 Run the result and explore the output:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./reflectionexample StringReverser reverse "hello"
 
 Exception in thread "main" java.lang.ClassNotFoundException: StringReverser
@@ -117,16 +117,16 @@ We can use the tracing agent when running the Java application and let it record
 First, we create the directory for the configuration to be saved to:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 mkdir -p META-INF/native-image
 ```
 
 Then, we run the application with the tracing agent enabled:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 # Note: the tracing agent must come before classpath and jar params on the command ine
 java -agentlib:native-image-agent=config-output-dir=META-INF/native-image ReflectionExample StringReverser reverse "hello"
 ```
@@ -136,13 +136,13 @@ java -agentlib:native-image-agent=config-output-dir=META-INF/native-image Reflec
 Explore the created configuration:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 cat META-INF/native-image/reflect-config.json
 ```
 
-![User Input](../images/noun_json_3070675_100.png)
-```JSON
+![JSON](../images/noun_json_3070675_100.png)
+```json
 [
     {
     "name":"StringReverser",
@@ -154,24 +154,24 @@ cat META-INF/native-image/reflect-config.json
 You can do this mutiple times and the runs are merged if we specify `native-image-agent=config-merge-dir`:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 java -agentlib:native-image-agent=config-merge-dir=META-INF/native-image ReflectionExample StringCapitalizer capitalize "hello"
 ```
 
 Building the native image now will make use of the provided configuration and configure the reflection for it.
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 native-image --no-fallback ReflectionExample
 ```
 
 Now let's see if that works any better:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
-![User Input](../images/noun_SH_File_272740_100.png)
-```SH
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
 ./reflectionexample StringReverser reverse "joker"
 ```
 
