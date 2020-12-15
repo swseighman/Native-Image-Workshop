@@ -18,15 +18,10 @@ Some of the benefits you get from it are:
 
 Let's take a look...
 
-<img src="../images/noun_Book_3652476_100.png"
-     style="display: inline; height: 2.5em;">
-<strong style="margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-60%);
-  transform: translateY(-60%);">
-References:
-</strong>
+<div class="inline">
+<img src="../images/noun_Book_3652476_100.png">
+<strong>References:</strong>
+</div>
 
 - [Native Image : Build a Native Image](https://www.graalvm.org/reference-manual/native-image/#build-a-native-image)
 
