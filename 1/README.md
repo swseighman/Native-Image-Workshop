@@ -1,6 +1,6 @@
 # Building a Simple GraalVM Native Image
 
-<div class="inline">
+<div class="inline-container">
 <img src="../images/noun_Stopwatch_14262.png">
 <strong>
   Estimated time: 15 minutes
@@ -18,7 +18,7 @@ Some of the benefits you get from it are:
 
 Let's take a look...
 
-<div class="inline">
+<div class="inline-container">
 <img src="../images/noun_Book_3652476_100.png">
 <strong>References:</strong>
 </div>
