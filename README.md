@@ -21,18 +21,18 @@ to adpat it, for example the `bash` shell script sections etc may need to be upd
 
 ## Table of Contents
 
-0. [What is Native Image](./0/)
-1. [Building a simple GraalVM native image](./1/)
-2. [Assisted configuration for GraalVM native image](./2/)
-3. [Class initialization strategy for GraalVM native image](./3/)
-4. [Smaller deployment options for GraalVM native image](./4/)
-5. [Deployment options for GraalVM native images](./5/)
-6. [Configuring memory used by GraalVM native images](./6/)
-7. [GC options for GraalVM native image](./7/)
-8. [Profile guided optimizations for GraalVM native image](./8/)
+* [What is Native Image](./0/)
+* [Building a simple GraalVM native image](./1/)
+* [Assisted configuration for GraalVM native image](./2/)
+* [Class initialization strategy for GraalVM native image](./3/)
+* [Smaller deployment options for GraalVM native image](./4/)
+* [Deployment options for GraalVM native images](./5/)
+* [Configuring memory used by GraalVM native images](./6/)
+* [GC options for GraalVM native image](./7/)
+* [Profile guided optimizations for GraalVM native image](./8/)
 
+Extra sessions on GraalVM EE JIT Performance & Polyglot
 
-
-9. [For best peak performance use GraalVM with the JIT](./9/)
-95. [Exploring the GraalVM JIT](./95/)
-97. [Exploring the polyglot runtime of GraalVM](./97/)
+* [For best peak performance use GraalVM with the JIT](./9/)
+* [Exploring the GraalVM JIT](./95/)
+* [Exploring the polyglot runtime of GraalVM](./97/)
