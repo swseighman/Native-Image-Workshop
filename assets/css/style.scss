@@ -18,10 +18,11 @@
     width: 2.5em;
 }
 
-h1::before {
-	content: url("images/noun_lab_3020051.png");
+div.markdown-body > h1:first-child::before {
+	content: url("../../images/noun_lab_3020051_100.png");
 	display: inline-block;
 	position: relative;
-	width: 37px;
-	top: 5px;
+	width: 100px;
+	top: 25px;
+	padding-right: 100px;
 }
