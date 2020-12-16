@@ -1,10 +1,12 @@
-## Some Notes on the "Limitations" of Native Image
+# Some Notes on the "Limitations" of Native Image
 
-Native Image is a new way to build Java applications.  It depends on certain set of assumptions and it is these assumptions that in turn lead to the benefits that Native Image can bring (fast startup, low memory etc.).
+Native Image is a new way to build Java applications.  It depends on a certain set of assumptions and it is these 
+assumptions that in turn lead to the benefits that Native Image brings (fast startup, low memory etc.).
 
-With these assumputions & benefits there do also come some limitations, although it is worth stressing that there are work arounds for many of these limitations.
+With these assumputions & benefits there do also come some limitations, although it is worth stressing that there are 
+work arounds for many of these limitations.
 
-Let's take a look at some of them.
+Let's take a look at some of these limitations.
 
 ## References
 <img src="../images/noun_Book_3652476_100.png"
