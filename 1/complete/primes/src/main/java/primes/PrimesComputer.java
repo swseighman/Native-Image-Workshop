@@ -21,6 +21,12 @@ public class PrimesComputer {
             .collect(Collectors.toList());
     }
 
+    /**
+     * If n is not a prime, then n = a * b (some a & b)
+     * Both a and b can't be larger than sqrt(n), or the product of them would be greater than n
+     * One of the factors has to be smaller than sqrt(n).
+     * So, if we don't find any factors by the time we get to sqrt(n), then n must be prime
+     */
     public static boolean isPrime(long n) {
         return LongStream.rangeClosed(2, (long) Math.sqrt(n))
             .allMatch(i -> n % i != 0);
