@@ -41,7 +41,7 @@ We will look into this in more detail in the following.
 Let's explore an example application that consists of a few classes to better understand the implications of 
 initialisation at `run-time` or `build-time` and how we can configure the initialisation strategy.
 
-Here's our program - you can create these files to follow along:
+Here's our program - you can create these files to follow along, create it in a file called, `Main0.java`:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Java](../images/noun_java_825609_100.png)
@@ -194,7 +194,8 @@ When classes contain any of the following, they can't be written to the image he
 If the analysis sees them in the image heap - it'll notify you and ask you to initalize the classes holding them at 
 runtime, but be aware that there may be a chain of dependencies that caused that class to be initialised at `build-time`.
 
-For example, if we modify the code to be as below, what will happen when we build?
+For example, if we modify the code to be as below, what will happen when we build? In fact, let's create a new file,
+`Main1.java`, to hold our updated code.
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Java](../images/noun_java_825609_100.png)
@@ -238,6 +239,13 @@ class B {
   }
 }
 ```
+Compile this code:
+
+![User Input](../images/noun_Computer_3477192_100.png)
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
+javac Main1.java
+```
 
 Building the native image like before will now fail, but please notice the build error:
 
@@ -247,7 +255,7 @@ Building the native image like before will now fail, but please notice the build
 native-image --no-fallback --initialize-at-build-time=A,B -cp . Main1 main1-fails
 ```
 
-This is the error you will see:
+What happened when we ran this? This is the error you will see, when you try and build the Native Image now:
 
 ![Error Message](../images/noun_protest_sign_2029359_100.png)
 ```java
