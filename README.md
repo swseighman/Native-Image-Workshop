@@ -8,6 +8,10 @@ The workshop is divided into a number of sub-pages, each largely self-contained,
 Native Image. Some of these workshops are equally applicable to the Community Edition & the Enterprise Edition, but some
 focus on functionality that is only available within the Enterprise Edition, such as Profile Guided Optimisations.
 
+## Credits
+
+This workshop is a fork from [shelajev/workshop](https://github.com/shelajev/workshop), so full credit must go to him.
+
 ## Install GraalVM 
 
 The instructions to install GraalVM can be found online 
