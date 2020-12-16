@@ -25,7 +25,7 @@ to adpat it, for example the `bash` shell script sections etc may need to be upd
 
 ## Table of Contents
 
-* [What is Native Image](./0/)
+* [What is Native Image?](./0/)
 * [Building a simple GraalVM native image](./1/)
 * [Assisted configuration for GraalVM native image](./2/)
 * [Class initialization strategy for GraalVM native image](./3/)
