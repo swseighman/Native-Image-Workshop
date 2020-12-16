@@ -78,7 +78,9 @@ Edit the `build.gradle` to include the following:
 ```groovy
 nativeImage {
   args("--pgo-instrument")
-  args("--gc=G1")
+  // G1GC is currently only supported on Linux. 
+  // For this example, as I don't want to do a docker based build, I will exclude it
+  //args("--gc=G1")
 }
 ```
 
@@ -89,9 +91,10 @@ Build the image:
 ```bash
 ./gradlew nativeImage
 ```
+
 ## Step 2 : Profile
 
-Now run it and apply the load:
+Now run it and apply the load - this will allow the code to be profiled:
 
 ![User Input](../images/noun_Computer_3477192_100.png)
 ![Shell Script](../images/noun_SH_File_272740_100.png)
@@ -106,6 +109,8 @@ The load can be shorter because we just need the profile:
 ```bash
 hey -z 30s http://localhost:8080/primes/random/100
 ```
+
+Note: with instrumentation added, the app will run slower.
 
 Stop the application with `Ctrl+C`, look at the profile file:
 
@@ -127,8 +132,8 @@ Also note the `../..` it's because the building happens in the `build/native-ima
 ![File](../images/noun_File_3647224_100.png)
 ```groovy
 nativeImage {
-  args("--pgo=../../default.iprof")
-  args("--gc=G1")
+  args("--pgo=default.iprof")
+  //args("--gc=G1")
 }
 ```
 
@@ -147,6 +152,8 @@ Test it works:
 ```bash
 ./build/native-image/application
 ```
+
+## Packing as a Docker Image (on Linux)
 
 Package it into the docker image. We can use the same `Dockerfile.slim` to build the image (the app on the host has 
 changed):

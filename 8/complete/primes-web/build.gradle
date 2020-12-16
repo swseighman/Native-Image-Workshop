@@ -38,11 +38,17 @@ java {
 }
 
 nativeImage {
-    args("--gc=G1")
+    // To instrument the native image, uncomment the following line
+    //args("--pgo-instrument")
+
+    // When you have gnerated a profile, use it to generate an optimised native image
+    args("--pgo=../../default.iprof")
+
+    // G1GC is currently only supported on Linux.
+    // For this example, as I don't want to do a docker based build, I will exclude it
+    //args("--gc=G1")
 }
 
 tasks {
-
-
 }
 
