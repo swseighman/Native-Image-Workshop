@@ -9,7 +9,7 @@ services:
     cpu_percent: 100
     cpus: 1
     ports:
-      - "8080:8080"
+      - "8080"
   nginx:
     image: nginx:latest
     volumes:

@@ -3,8 +3,8 @@ services:
   primes-web:
     image: primes-web:slim
     restart: always
-    mem_limit: 128m
-    memswap_limit: 128m
+    mem_limit: 256m
+    memswap_limit: 256m
     cpu_count: 1
     cpu_percent: 100
     cpus: 1
