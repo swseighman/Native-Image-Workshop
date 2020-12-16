@@ -265,7 +265,7 @@ Trace: Object was reached by
 	reading field A.t
 
 Error: Use -H:+ReportExceptionStackTraces to print stacktrace of underlying exception
-Error: Image build request failed with exit status 1```
+Error: Image build request failed with exit status 1
 ```
 
 ## The Solution, in This Case
