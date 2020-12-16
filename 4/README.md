@@ -114,7 +114,7 @@ ls -lah build/native-image/application
 
 ## Making it Smaller
 
-We can compress the application with, for example, the upx utility: https://upx.github.io/
+We can compress the application with, for example, the upx utility: [https://upx.github.io/](https://upx.github.io/)
 
 Run the upx with various options to check the speed/compression ratio, for example:
 
