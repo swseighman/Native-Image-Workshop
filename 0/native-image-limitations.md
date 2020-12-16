@@ -8,16 +8,10 @@ work arounds for many of these limitations.
 
 Let's take a look at some of these limitations.
 
-## References
-<img src="../images/noun_Book_3652476_100.png"
-     style="display: inline; height: 2.5em;">
-<strong style="margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-60%);
-  transform: translateY(-60%);">
-References:
-</strong>
+<div class="inline-container">
+<img src="../images/noun_Book_3652476_100.png">
+<strong>References:</strong>
+</div>
 
 - [Native Image : Native Image Compatibility and Optimization Guide](https://www.graalvm.org/reference-manual/native-image/Limitations/)
 
