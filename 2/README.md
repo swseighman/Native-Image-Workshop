@@ -138,6 +138,22 @@ Then, we run the application with the tracing agent enabled:
 java -agentlib:native-image-agent=config-output-dir=META-INF/native-image ReflectionExample StringReverser reverse "hello"
 ```
 
+---
+
+![Note](../images/noun_bulb_1912576_100.png)
+
+### `config-merge-dir`
+
+We can merge mutiple runs of the java agent by specifying a merge directory when we run the agent. See below for an
+example:
+
+![User Input](../images/noun_Computer_3477192_100.png)
+![Shell Script](../images/noun_SH_File_272740_100.png)
+```bash
+JAVA_HOME/bin/java -agentlib:native-image-agent=config-merge-dir=/path/to/config-dir/ ...
+```
+---
+
 ![Tracing Agent Config](../images/tracing-agent-config.png)
 
 Explore the created configuration:
